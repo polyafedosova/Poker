@@ -1,4 +1,8 @@
-package ru.vsu.fedosova;
+package ru.vsu.fedosova.service;
+
+import ru.vsu.fedosova.model.Card;
+import ru.vsu.fedosova.Rank;
+import ru.vsu.fedosova.Suit;
 
 import java.util.List;
 

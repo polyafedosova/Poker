@@ -1,7 +1,6 @@
 package ru.vsu.fedosova.service.combination;
 
-import ru.vsu.fedosova.Card;
-import ru.vsu.fedosova.Rank;
+import ru.vsu.fedosova.model.Card;
 import ru.vsu.fedosova.Suit;
 
 import java.util.*;

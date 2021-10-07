@@ -1,6 +1,6 @@
 package ru.vsu.fedosova.service.combination;
 
-import ru.vsu.fedosova.Card;
+import ru.vsu.fedosova.model.Card;
 import ru.vsu.fedosova.Rank;
 import ru.vsu.fedosova.Suit;
 
@@ -11,7 +11,6 @@ public class RoyalFleshCombinationService implements ICombinationService{
     public List<Card> calc(List<Card> unionCard) {
         List<Card> combination = new ArrayList<>();
         unionCard.sort(Comparator.comparing(Card::getRank));
-        Collections.reverse(unionCard);
         Map<Suit, Integer> countOfSuit = new HashMap<>();
         for(Card c: unionCard) {
             countOfSuit.put(c.getSuit(),
@@ -22,16 +21,17 @@ public class RoyalFleshCombinationService implements ICombinationService{
                         combination.add(c1);
                     }
                 }
+                break;
             }
         }
         Collections.reverse(combination);
-        if (combination.get(0).getRank() == Rank.TEN) {
+        if (!combination.isEmpty() && combination.get(0).getRank() == Rank.ACE) {
             List<Card> flush = new ArrayList<>(combination);
             combination.clear();
             Card prev = flush.get(0);
             int count = 0;
             for (Card c : flush) {
-                if (c.getRank().ordinal() - prev.getRank().ordinal() == 1) {
+                if (prev.getRank().ordinal() - c.getRank().ordinal() == 1) {
                     if (count == 0) {
                         combination.add(prev);
                     }

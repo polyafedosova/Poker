@@ -1,21 +1,22 @@
-package ru.vsu.fedosova;
+package ru.vsu.fedosova.model;
+
+import ru.vsu.fedosova.StepType;
 
 import java.util.*;
 
 public class Game {
 
-    //почему нет new для 1 мапы
-    private Map<Player, List<Card>> cardsPlayer;
+    private Map<Player, List<Card>> cardsPlayers;
     private Queue<Player> playerQueue = new LinkedList<>();
     private Map<StepType, List<Card>> cardsStep = new LinkedHashMap<>();
     private List<Card> deck = new LinkedList<>();
 
-    public Map<Player, List<Card>> getCardsPlayer() {
-        return cardsPlayer;
+    public Map<Player, List<Card>> getCardsPlayers() {
+        return cardsPlayers;
     }
 
-    public void setCardsPlayer(Map<Player, List<Card>> cardsPlayer) {
-        this.cardsPlayer = cardsPlayer;
+    public void setCardsPlayers(Map<Player, List<Card>> cardsPlayers) {
+        this.cardsPlayers = cardsPlayers;
     }
 
     public Queue<Player> getPlayerQueue() {

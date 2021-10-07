@@ -1,6 +1,6 @@
 package ru.vsu.fedosova.service.combination;
 
-import ru.vsu.fedosova.Card;
+import ru.vsu.fedosova.model.Card;
 
 import java.util.ArrayList;
 import java.util.Collections;

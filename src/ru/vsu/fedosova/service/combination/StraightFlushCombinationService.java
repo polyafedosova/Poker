@@ -1,6 +1,6 @@
 package ru.vsu.fedosova.service.combination;
 
-import ru.vsu.fedosova.Card;
+import ru.vsu.fedosova.model.Card;
 import ru.vsu.fedosova.Suit;
 
 import java.util.*;
@@ -20,6 +20,7 @@ public class StraightFlushCombinationService implements ICombinationService{
                 s = c.getSuit();
             }
         }
+
         if (Collections.max(countOfSuit.values()) >= 5) {
             for(Card c1: unionCard) {
                 if (c1.getSuit() == s) {
