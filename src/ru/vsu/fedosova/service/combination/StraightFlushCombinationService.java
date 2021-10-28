@@ -1,7 +1,7 @@
 package ru.vsu.fedosova.service.combination;
 
 import ru.vsu.fedosova.model.Card;
-import ru.vsu.fedosova.Suit;
+import ru.vsu.fedosova.model.Suit;
 
 import java.util.*;
 

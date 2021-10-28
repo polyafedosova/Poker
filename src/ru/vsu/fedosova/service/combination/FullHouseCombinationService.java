@@ -1,5 +1,6 @@
 package ru.vsu.fedosova.service.combination;
 
+import ru.vsu.fedosova.model.Rank;
 import ru.vsu.fedosova.model.Card;
 
 import java.util.*;
@@ -7,27 +8,25 @@ import java.util.*;
 public class FullHouseCombinationService implements ICombinationService {
     @Override
     public List<Card> calc(List<Card> unionCard) {
-        List<Card> combination = new ArrayList<>();
+        List<Card> combination;
         List<Card> pair = new ArrayList<>();
         List<Card> three = new ArrayList<>();
+        Map<Rank, Integer> countOfRank = new HashMap<>();
         unionCard.sort(Comparator.comparing(Card::getRank));
-        Card prev = unionCard.get(0);
-        int count = 0;
-        for (Card c: unionCard) {
-            if(prev.getRank() == c.getRank()) {
-                count++;
-            } else {
-                if(count >=1) {
-                    pair.add(prev);
-                    pair.add(unionCard.get(unionCard.indexOf(prev) - 1));
-                    if (count == 2) {
-                        three.add(prev);
-                        three.add(unionCard.get(unionCard.indexOf(prev) - 1));
-                        three.add(unionCard.get(unionCard.indexOf(prev) - 2));
+        for(Card c: unionCard) {
+            countOfRank.put(c.getRank(),
+                    (countOfRank.get(c.getRank()) == null) ? 1 : countOfRank.get(c.getRank()) + 1);
+            if (countOfRank.get(c.getRank()) == 2) {
+                for(Card c1: unionCard) {
+                    if (c1.getRank() == c.getRank()) {
+                        pair.add(c1);
                     }
-                    count = 0;
                 }
-                prev = c;
+            }
+            if (countOfRank.get(c.getRank()) == 3) {
+                for (int i = 0; i < 3; i++) {
+                    three.add(pair.remove(pair.size() - 1));
+                }
             }
         }
         if (three.size() == 6) {
@@ -39,7 +38,6 @@ public class FullHouseCombinationService implements ICombinationService {
                     return combination;
                 }
             }
-            return combination;
         } else if (three.size() == 3) {
             combination = three;
             if (pair.size() >= 2) {

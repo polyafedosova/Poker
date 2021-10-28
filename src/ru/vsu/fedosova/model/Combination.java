@@ -1,8 +1,5 @@
 package ru.vsu.fedosova.model;
 
-import ru.vsu.fedosova.CombinationType;
-import ru.vsu.fedosova.model.Card;
-
 import java.util.List;
 
 public class Combination implements Comparable<Combination>{

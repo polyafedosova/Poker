@@ -1,15 +1,18 @@
 package ru.vsu.fedosova.model;
 
-import ru.vsu.fedosova.StepType;
-
 import java.util.*;
 
 public class Game {
 
-    private Map<Player, List<Card>> cardsPlayers;
-    private Queue<Player> playerQueue = new LinkedList<>();
+    private Map<Player, List<Card>> cardsPlayers = new LinkedHashMap<>();
+    private LinkedList<Player> playerLinkedList = new LinkedList<>();
     private Map<StepType, List<Card>> cardsStep = new LinkedHashMap<>();
+    private Map<Player, Bet> actionsPlayers = new LinkedHashMap<>();
+    Map<Player, Combination> playerCombination = new LinkedHashMap<>();
     private List<Card> deck = new LinkedList<>();
+    private Map<Player, Double> sidePots = new LinkedHashMap<>();
+    //todo мапу с банками
+    private Double bank = 0.0;
 
     public Map<Player, List<Card>> getCardsPlayers() {
         return cardsPlayers;
@@ -19,12 +22,12 @@ public class Game {
         this.cardsPlayers = cardsPlayers;
     }
 
-    public Queue<Player> getPlayerQueue() {
-        return playerQueue;
+    public LinkedList<Player> getPlayerLinkedList() {
+        return playerLinkedList;
     }
 
-    public void setPlayerQueue(Queue<Player> playerQueue) {
-        this.playerQueue = playerQueue;
+    public void setPlayerLinkedList(LinkedList<Player> playerLinkedList) {
+        this.playerLinkedList = playerLinkedList;
     }
 
     public Map<StepType, List<Card>> getCardsStep() {
@@ -35,11 +38,39 @@ public class Game {
         this.cardsStep = cardsStep;
     }
 
+    public Map<Player, Bet> getActionsPlayers() {
+        return actionsPlayers;
+    }
+
+    public void setActionsPlayers(Map<Player, Bet> actionsPlayers) {
+        this.actionsPlayers = actionsPlayers;
+    }
+
+    public Map<Player, Combination> getPlayerCombination() {
+        return playerCombination;
+    }
+
+    public void setPlayerCombination(Map<Player, Combination> playerCombination) {
+        this.playerCombination = playerCombination;
+    }
+
     public List<Card> getDeck() {
         return deck;
     }
 
     public void setDeck(List<Card> deck) {
         this.deck = deck;
+    }
+
+    public Map<Player, Double> getSidePots() {
+        return sidePots;
+    }
+
+    public Double getBank() {
+        return bank;
+    }
+
+    public void setBank(Double bank) {
+        this.bank = bank;
     }
 }

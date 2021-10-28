@@ -1,8 +1,5 @@
 package ru.vsu.fedosova.model;
 
-import ru.vsu.fedosova.Rank;
-import ru.vsu.fedosova.Suit;
-
 public class Card implements Comparable<Card> {
     private final char[] unicode;
     private final Suit suit;

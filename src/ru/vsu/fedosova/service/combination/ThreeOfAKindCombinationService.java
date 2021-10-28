@@ -1,7 +1,7 @@
 package ru.vsu.fedosova.service.combination;
 
 import ru.vsu.fedosova.model.Card;
-import ru.vsu.fedosova.Rank;
+import ru.vsu.fedosova.model.Rank;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package ru.vsu.fedosova;
+package ru.vsu.fedosova.model;
 
 public enum Suit {
     SPADES,
