@@ -7,8 +7,6 @@ import java.util.*;
 
 public class GameService {
 
-    //todo вывод, банки (all-in)
-
     private final Map<CombinationType, ICombinationService> combinationServiceMap;
 
     public GameService() {
@@ -72,7 +70,6 @@ public class GameService {
             //высчитывает комбинации каждого игрока
             getPlayerCombination(s, game);
             int i = 0;
-            //if (s == StepType.PRE_FLOP) i = 2;
             while (actionService.getCountCheck() != game.getPlayerLinkedList().size() & game.getPlayerCombination().size() > 1) {
                 if(!game.getActionsPlayers().get(game.getPlayerLinkedList().get(i)).getBetType().equals(BetType.ALL_IN)) {
                     Player player = game.getPlayerLinkedList().get(i);
