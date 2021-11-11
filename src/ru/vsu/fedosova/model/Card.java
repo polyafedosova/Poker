@@ -1,5 +1,7 @@
 package ru.vsu.fedosova.model;
 
+import java.util.Arrays;
+
 public class Card implements Comparable<Card> {
     private final char[] unicode;
     private final Suit suit;
@@ -26,9 +28,16 @@ public class Card implements Comparable<Card> {
     }
 
 
-    @Override
+    /*@Override
     public String toString() {
         return " " + rank + ' ' + suit;
+    }
+     */
+
+    @Override
+    public String toString() {
+        assert unicode != null;
+        return String . copyValueOf (unicode) + " " + "(" + rank + ' ' + suit + ")";
     }
 
     @Override

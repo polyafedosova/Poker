@@ -21,6 +21,11 @@ public class Combination implements Comparable<Combination>{
     }
 
     @Override
+    public String toString() {
+        return type.toString() + '\n' + cardList;
+    }
+
+    @Override
     public int compareTo(Combination c) {
         int result = type.ordinal() - c.getType().ordinal();
         if (result == 0) {

@@ -5,14 +5,12 @@ import java.util.*;
 public class Game {
 
     private Map<Player, List<Card>> cardsPlayers = new LinkedHashMap<>();
-    private LinkedList<Player> playerLinkedList = new LinkedList<>();
+    private ArrayList<Player> playerLinkedList = new ArrayList<>();
     private Map<StepType, List<Card>> cardsStep = new LinkedHashMap<>();
     private Map<Player, Bet> actionsPlayers = new LinkedHashMap<>();
     Map<Player, Combination> playerCombination = new LinkedHashMap<>();
     private List<Card> deck = new LinkedList<>();
-    private Map<Player, Double> sidePots = new LinkedHashMap<>();
-    //todo мапу с банками
-    private Double bank = 0.0;
+    private Map<Player, Double> pots = new LinkedHashMap<>();
 
     public Map<Player, List<Card>> getCardsPlayers() {
         return cardsPlayers;
@@ -22,11 +20,11 @@ public class Game {
         this.cardsPlayers = cardsPlayers;
     }
 
-    public LinkedList<Player> getPlayerLinkedList() {
+    public ArrayList<Player> getPlayerLinkedList() {
         return playerLinkedList;
     }
 
-    public void setPlayerLinkedList(LinkedList<Player> playerLinkedList) {
+    public void setPlayerList(ArrayList<Player> playerLinkedList) {
         this.playerLinkedList = playerLinkedList;
     }
 
@@ -62,15 +60,7 @@ public class Game {
         this.deck = deck;
     }
 
-    public Map<Player, Double> getSidePots() {
-        return sidePots;
-    }
-
-    public Double getBank() {
-        return bank;
-    }
-
-    public void setBank(Double bank) {
-        this.bank = bank;
+    public Map<Player, Double> getPots() {
+        return pots;
     }
 }

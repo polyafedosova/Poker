@@ -20,4 +20,11 @@ public class Player {
     public void setPot(Double pot) {
         this.pot = pot;
     }
+
+    @Override
+    public String toString() {
+        if(pot != null)
+            return name + '\n' + "Pot: " + pot;
+        else return name;
+    }
 }
