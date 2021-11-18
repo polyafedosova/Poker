@@ -7,7 +7,7 @@ public class Bet {
 
     public Bet(BetType betType, Double bet) {
         this.betType = betType;
-        this.bet = bet;
+        this.bet = Math.ceil(bet * Math.pow(10, 2)) / Math.pow(10, 2);
     }
 
     public Bet(BetType betType) {

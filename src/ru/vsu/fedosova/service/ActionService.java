@@ -13,11 +13,12 @@ public class ActionService {
         this.blind = blind;
     }
 
-    public Bet makeBet(Player p, CombinationType c, Bet prevBet, Bet betPrevPlayer) {
-        if ((prevBet.getBetType() != BetType.CHECK && prevBet.getBet() >= betPrevPlayer.getBet())) {
+    public Bet makeBet(Player p, CombinationType c, Bet prevBet, Bet betPrevPlayer, double playerBank, double prevPlayerBank) {
+        if (prevBet.getBetType() != BetType.CHECK && prevBet.getBet() >= betPrevPlayer.getBet() && playerBank >= prevPlayerBank) {
             countCheck++;
             return new Bet(BetType.CHECK, 0.0);
         } else {
+            countCheck = 0;
             double myBetInMind = (c.ordinal() + 1) / 10.0 * p.getPot();
             if (myBetInMind == p.getPot()) return new Bet(BetType.ALL_IN, myBetInMind);
 
@@ -27,10 +28,10 @@ public class ActionService {
                     else return new Bet(BetType.BET, blind);
                 } else return new Bet(BetType.BET, myBetInMind);
             } else {
-                if (myBetInMind > betPrevPlayer.getBet()) {
+                if (playerBank + myBetInMind > prevPlayerBank) {
                     return new Bet(BetType.RAISE, myBetInMind);
                 } else {
-                    if (betPrevPlayer.getBet() < p.getPot()) return new Bet(BetType.CALL, betPrevPlayer.getBet() - prevBet.getBet());
+                    if (prevPlayerBank - playerBank < p.getPot()) return new Bet(BetType.CALL, prevPlayerBank - playerBank);
                     else return randomDecision(p.getPot());
                 }
             }

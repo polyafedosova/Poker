@@ -6,7 +6,7 @@ public class Player {
 
     public Player(String name, Double pot) {
         this.name = name;
-        this.pot = pot;
+        this.pot = Math.ceil(pot * Math.pow(10, 2)) / Math.pow(10, 2);
     }
 
     public String getName() {
@@ -18,7 +18,7 @@ public class Player {
     }
 
     public void setPot(Double pot) {
-        this.pot = pot;
+        this.pot = Math.ceil(pot * Math.pow(10, 2)) / Math.pow(10, 2);
     }
 
     @Override

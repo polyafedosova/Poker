@@ -70,12 +70,13 @@ public class GameService {
             //высчитывает комбинации каждого игрока
             getPlayerCombination(s, game);
             int i = 0;
+            if (s == StepType.PRE_FLOP) i = 2;
             while (actionService.getCountCheck() != game.getPlayerLinkedList().size() & game.getPlayerCombination().size() > 1) {
                 if(!game.getActionsPlayers().get(game.getPlayerLinkedList().get(i)).getBetType().equals(BetType.ALL_IN)) {
                     Player player = game.getPlayerLinkedList().get(i);
                     Player prevPlayer = game.getPlayerLinkedList().get((i == 0) ? (game.getPlayerLinkedList().size() - 1) : (i - 1));
                     Bet newBet = actionService.makeBet(player, game.getPlayerCombination().get(player).getType(), game.getActionsPlayers().get(player),
-                            game.getActionsPlayers().get(prevPlayer));
+                            game.getActionsPlayers().get(prevPlayer), game.getPots().get(player), game.getPots().get(prevPlayer));
                     game.getActionsPlayers().put(player, newBet);
                     player.setPot(player.getPot() - newBet.getBet());
                     game.getPots().put(player, newBet.getBet() + game.getPots().get(player));
@@ -116,10 +117,11 @@ public class GameService {
                 p.getKey().setPot(p.getValue() - game.getPots().get(winner));
             }
         }
-        System.out.println("Winner: " + winner.getName());
-        System.out.println(winner.getPot());
+        System.out.println("Winner: ");
+        printStep(game, winner, null);
+        /*System.out.println(winner.getPot());
         System.out.println(game.getPlayerCombination().get(winner).getType());
-        System.out.println(game.getPlayerCombination().get(winner).getCardList());
+        System.out.println(game.getPlayerCombination().get(winner).getCardList());*/
     }
 
 
@@ -215,6 +217,7 @@ public class GameService {
         System.out.println(player);
         if (game.getPlayerCombination().containsKey(player))
         System.out.println(game.getPlayerCombination().get(player));
+        if (newBet != null)
         System.out.println(newBet);
     }
 }
